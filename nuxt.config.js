@@ -1,14 +1,3 @@
-/* nuxt.config.js */
-// `DEPLOY_ENV` が `GH_PAGES` の場合のみ `router.base = '/<repository-name>/'` を追加する
-const routerBase =
-  process.env.DEPLOY_ENV === 'GH_PAGES'
-    ? {
-        router: {
-          base: '/777evaluator/',
-        },
-      }
-    : {};
-
 export default {
   ssr: false,
   target: 'static',
@@ -51,5 +40,7 @@ export default {
       families: ['Noto+Sans+JP', 'M+PLUS+Rounded+1c:300,400'],
     },
   },
-  ...routerBase,
+  router: {
+    base: '/777evaluator/',
+  },
 };

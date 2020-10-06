@@ -33,6 +33,7 @@
         </button>
       </li>
     </ul>
+    <a :href="permaLink(expression.raw)">PermaLink</a>
   </div>
 </template>
 
@@ -188,7 +189,11 @@ export default {
 
     return {
       expression: {
-        raw: '',
+        raw: (function () {
+          const args = new URL(document.URL);
+          const rice = args.searchParams.get('rice');
+          return rice ? decodeURI(rice.toString()) : '';
+        })(),
         isResultError: false,
         uiKeys: ['7', '^^', '牧', '(', ')', '='],
         calc(str: string): string {
@@ -217,9 +222,11 @@ export default {
         clear() {
           this.raw = '';
         },
-        parse(str: String): Rice | ParseError {
+        parse(str: string): Rice | ParseError {
           const stack: (Rice | '=')[][] = [];
           let frontier: (Rice | '=')[] = [];
+          if (/[0-2]/.test(str))
+            return new ParseError('Parse Error: 知らない文字が有るよ');
           const code = str
             .replace(/ /g, '')
             .replace(/7/g, '0')
@@ -310,6 +317,11 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    permaLink(str: string) {
+      return 'https://catupper.github.io/777evaluator/?rice=' + escape(str);
+    },
   },
 };
 </script>
