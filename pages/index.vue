@@ -320,7 +320,8 @@ export default {
   },
   methods: {
     share(str: string) {
-      const shareUrl = 'https://example.com' + escape(str); // シェアしたいURL
+      const shareUrl =
+        'https://catupper.github.io/777evaluator/?=' + escape(str); // シェアしたいURL
       const href = `https://twitter.com/intent/tweet?url=${shareUrl}`;
       window.open(href, '_blank'); // 新規タブでSNSのシェアページを開く
     },
