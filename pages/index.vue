@@ -34,7 +34,7 @@
       </li>
     </ul>
     <v-btn @click="share(expression.raw)">
-      <fa :icon="faTwitter" />
+      <fa :icon="faTwitter" style="color: #1da1f2; font-size: 40px" />
     </v-btn>
   </div>
 </template>
