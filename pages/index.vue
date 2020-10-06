@@ -33,11 +33,14 @@
         </button>
       </li>
     </ul>
-    <v-btn @click="share(expression.raw)">Twitterでシェア</v-btn>
+    <v-btn @click="share(expression.raw)">
+      <fa :icon="faTwitter" />
+    </v-btn>
   </div>
 </template>
 
 <script lang="ts">
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 export default {
   data() {
     interface Rice {
@@ -201,7 +204,7 @@ export default {
           const expr = parseResult.eval().toString();
           this.isResultError = parseResult instanceof ParseError;
 
-          if (expr.includes('D')) {
+          if (!this.isResultError && expr.includes('D')) {
             return '(´∀｀*)ｳﾌﾌ';
           } else {
             return expr;
@@ -317,6 +320,12 @@ export default {
         },
       },
     };
+  },
+
+  computed: {
+    faTwitter() {
+      return faTwitter;
+    },
   },
   methods: {
     share(str: string) {

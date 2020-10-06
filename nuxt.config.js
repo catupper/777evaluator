@@ -33,12 +33,15 @@ export default {
     ],
   },
   css: ['@/assets/css/main.css'],
-  buildModules: ['@nuxt/typescript-build'],
-  modules: ['nuxt-webfontloader'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
+  modules: ['nuxt-webfontloader', 'nuxt-fontawesome'],
   webfontloader: {
     google: {
       families: ['Noto+Sans+JP', 'M+PLUS+Rounded+1c:300,400'],
     },
+  },
+  fontawesome: {
+    component: 'fa',
   },
   router: {
     base: '/777evaluator/',
