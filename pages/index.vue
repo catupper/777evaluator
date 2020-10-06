@@ -33,7 +33,7 @@
         </button>
       </li>
     </ul>
-    <a :href="permaLink(expression.raw)">PermaLink</a>
+    <v-btn @click="share(expression.raw)">Twitterでシェア</v-btn>
   </div>
 </template>
 
@@ -319,8 +319,10 @@ export default {
     };
   },
   methods: {
-    permaLink(str: string) {
-      return 'https://catupper.github.io/777evaluator/?rice=' + escape(str);
+    share(str: string) {
+      const shareUrl = 'https://example.com' + escape(str); // シェアしたいURL
+      const href = `https://twitter.com/intent/tweet?url=${shareUrl}`;
+      window.open(href, '_blank'); // 新規タブでSNSのシェアページを開く
     },
   },
 };
