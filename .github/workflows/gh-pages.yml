@@ -31,9 +31,7 @@ jobs:
       run: npm test
 
     - name: generate
-      run: npm run generate
-      env:
-        GH_PAGES: DEPLOY_ENV
+      run: npm run generate:gh-pages
 
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
