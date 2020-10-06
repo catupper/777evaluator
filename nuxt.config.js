@@ -43,6 +43,7 @@ export default {
       { hid: 'twitter:card', content: 'summary' },
     ],
   },
+  css: ['@/assets/css/main.css'],
   buildModules: ['@nuxt/typescript-build'],
   modules: ['nuxt-webfontloader'],
   webfontloader: {
