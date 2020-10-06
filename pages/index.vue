@@ -321,8 +321,11 @@ export default {
   methods: {
     share(str: string) {
       const shareUrl =
-        'https://catupper.github.io/777evaluator/?=' + escape(str); // シェアしたいURL
-      const href = `https://twitter.com/intent/tweet?url=${escape(shareUrl)}`;
+        'https://catupper.github.io/777evaluator/?rice=' +
+        encodeURIComponent(str).replace('(', '%28').replace(')', '%29'); // シェアしたいURL
+      const href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+        shareUrl
+      )}`;
       window.open(href, '_blank'); // 新規タブでSNSのシェアページを開く
     },
   },
