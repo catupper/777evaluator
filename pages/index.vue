@@ -201,6 +201,7 @@ export default {
         uiKeys: ['7', '^^', '牧', '(', ')', '='],
         calc(str: string): string {
           const parseResult = this.parse(str);
+          console.log(parseResult);
           const expr = parseResult.eval().toString();
           this.isResultError = parseResult instanceof ParseError;
 
@@ -283,7 +284,11 @@ export default {
                     tmp.push(new Round(new Sentence(riceField[0])));
                   } else {
                     tmp.push(
-                      new Equation(riceField.map(rices => new Sentence(rices)))
+                      new Round(
+                        new Equation(
+                          riceField.map(rices => new Sentence(rices))
+                        )
+                      )
                     );
                   }
                   frontier = tmp;
