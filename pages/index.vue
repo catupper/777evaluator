@@ -33,9 +33,11 @@
         </button>
       </li>
     </ul>
-    <v-btn @click="share(expression.raw)">
-      <fa :icon="faTwitter" style="color: #1da1f2; font-size: 40px" />
-    </v-btn>
+    <div>
+      <div id="tweetbutton" @click="share(expression.raw)">
+        <fa :icon="faTwitter" style="color: #1da1f2; font-size: 40px" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -464,5 +466,15 @@ export default {
   flex-wrap: wrap;
   margin: 25px auto 0;
   padding: 0;
+}
+
+#tweetbutton {
+  width: 60px;
+  text-align: center;
+  margin: 50px auto 0;
+}
+
+#tweetbutton:hover {
+  cursor: pointer;
 }
 </style>
